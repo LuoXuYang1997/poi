@@ -1,0 +1,45 @@
+CREATE TABLE `room`  (
+  `roomNumber` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '房间号',
+  `price` float NOT NULL COMMENT '价格',
+  `roomType` int(10) NOT NULL COMMENT '房间类型',
+  `deposit` float NULL DEFAULT NULL COMMENT '押金',
+  `status` int(10) NOT NULL COMMENT '客房状态 1 可入住 2 已入住 3 待清理 4 停用'
+);
+
+-- ----------------------------
+-- Records of room
+-- ----------------------------
+INSERT INTO `room` VALUES ('1111', 360, 1, 100, 1);
+INSERT INTO `room` VALUES ('1112', 390, 1, 120, 1);
+INSERT INTO `room` VALUES ('1113', 350, 1, 100, 1);
+INSERT INTO `room` VALUES ('1114', 400, 2, 150, 1);
+INSERT INTO `room` VALUES ('1116', 480, 3, 160, 1);
+INSERT INTO `room` VALUES ('1117', 560, 4, 200, 1);
+INSERT INTO `room` VALUES ('1118', 580, 4, 200, 1);
+INSERT INTO `room` VALUES ('1119', 560, 4, 200, 1);
+INSERT INTO `room` VALUES ('2000', 600, 5, 250, 1);
+INSERT INTO `room` VALUES ('2002', 650, 5, 200, 1);
+INSERT INTO `room` VALUES ('2003', 700, 6, 280, 1);
+INSERT INTO `room` VALUES ('2004', 700, 6, 280, 1);
+INSERT INTO `room` VALUES ('2006', 1200, 9, 350, 3);
+INSERT INTO `room` VALUES ('2007', 8888, 7, 2000, 1);
+INSERT INTO `room` VALUES ('2008', 1600, 8, 500, 3);
+INSERT INTO `room` VALUES ('2009', 1600, 8, 500, 1);
+INSERT INTO `room` VALUES ('3003', 1200, 9, 350, 1);
+INSERT INTO `room` VALUES ('3004', 1200, 9, 350, 1);
+INSERT INTO `room` VALUES ('3005', 350, 3, 120, 3);
+INSERT INTO `room` VALUES ('3006', 1800, 10, 680, 1);
+INSERT INTO `room` VALUES ('3007', 1680, 10, 600, 4);
+INSERT INTO `room` VALUES ('3008', 1680, 10, 680, 3);
+INSERT INTO `room` VALUES ('3009', 1800, 11, 700, 1);
+INSERT INTO `room` VALUES ('4001', 1800, 11, 700, 3);
+INSERT INTO `room` VALUES ('4002', 2500, 11, 800, 1);
+INSERT INTO `room` VALUES ('4003', 2500, 10, 800, 3);
+INSERT INTO `room` VALUES ('4004', 260, 7, 100, 3);
+INSERT INTO `room` VALUES ('4005', 260, 7, 100, 3);
+INSERT INTO `room` VALUES ('4007', 500, 7, 150, 3);
+INSERT INTO `room` VALUES ('4009', 600, 7, 350, 3);
+INSERT INTO `room` VALUES ('5001', 700, 7, 250, 3);
+INSERT INTO `room` VALUES ('5002', 700, 7, 350, 3);
+INSERT INTO `room` VALUES ('5003', 8888, 8, 2500, 3);
+INSERT INTO `room` VALUES ('5004', 700, 11, 350, 3);

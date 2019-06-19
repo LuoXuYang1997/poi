@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>无标题文档</title>
+    <link rel="stylesheet" type="text/css" href="../bootstrap/frame/bootstrap2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../bootstrap/frame/font-awesome-4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" type="text/css"
+          href="../bootstrap/frame/bootstrap-table-master/src/bootstrap-table.css">
+    <link rel="stylesheet" type="text/css"
+          href="../bootstrap/frame/bootstrap3-editable-1.5.1/bootstrap3-editable/css/bootstrap-editable.css">
+    <link rel="stylesheet" type="text/css" href="../bootstrap/frame/bootstrap-fileinput-master/css/fileinput.css">
+    <link rel="stylesheet" type="text/css" href="../bootstrap/frame/bootstrap2/css/bootstrap.min.css">
+
+    <script src="../bootstrap/frame/jquery/jquery-3.3.1.js"></script>
+    <script src="../bootstrap/frame/layer/layer.js"></script>
+    <script src="../bootstrap/frame/bootstrap-table-master/src/bootstrap-table.js"></script>
+    <script src="../bootstrap/frame/bootstrap3-editable-1.5.1/bootstrap3-editable/js/bootstrap-editable.js"></script>
+    <script src="../bootstrap/frame/bootstrap-table-master/src/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="../bootstrap/frame/bootstrap-table-master/dist/extensions/editable/bootstrap-table-editable.min.js"></script>
+    <script src="../bootstrap/frame/bootstrap2/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+<div id="toolbar" class="btn-group">
+    <button id="btn" type="button" class="btn btn-warning" onclick="exportExcel()">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>导出表格
+    </button>
+</div>
+<table id="page"></table>
+<script>
+    $(function () {
+        initTable('../room/getRoom', 1, 3);//调用函数，初始化表格
+    });
+
+    function initTable(url, pageNumber, pageSize) {
+        $('#page').bootstrapTable('destroy'); //先销毁表格
+        $('#page').bootstrapTable({
+            url: url,
+            method: 'get',
+            toolbar: "#toolbar",
+            striped: true, // 是否显示行间隔色 //search : "true",
+            sidePagination: "server",
+            pageNumber: pageNumber, //初始化加载第一页，默认第一页
+            pageList: [3, 5, 10, 20, 30],//可供选择的每页的行数
+            pageSize: pageSize,//初始默认每页行数
+            pagination: true,
+            showRefresh: false,//刷新
+            showPaginationSwitch: false,//是否隐藏分页条
+            showToggle: false, //是否显示详细视图和列表视图的切换按钮
+            // clickToSelect: true,点击选中
+            editable: true,
+            contentType: "application/x-www-form-urlencoded",
+            paginationPreText: "上一页",
+            paginationNextText: "下一页",
+            queryParamsType: "limit",//设置为 ‘limit’ 则会发送符合 RESTFul 格式的参数.
+            sortable: true, // 是否启用排序
+            // queryParams: queryParams, //queryParams为参数设置的函数
+            queryParams: function (params) {
+                return {//这里的params是table提供的
+                    pageNum: (params.offset / params.limit) + 1, //当前页面,默认是上面设置的1(pageNumber)
+                    pageSize: params.limit, //每一页的数据行数，默认是上面设置的5(pageSize)
+                    /* username: $("#searchString_id").val()*/ //这个就是搜索框中的内容，可以自动传到后台，搜索实现在xml中体现
+                };
+            },
+            columns: [
+                {
+                    checkbox: true
+                }, {
+                    field: 'roomNumber',
+                    title: '房间编号'
+                },
+                {
+                    field: 'price',
+                    title: '价格'
+                },
+                {
+                    field: 'roomType',
+                    title: '房间类型'
+                },
+                {
+                    field: 'deposit',
+                    title: '押金'
+                },
+                {
+                    field: 'statusstr',
+                    title: '状态'
+                }],
+            onLoadSuccess: function () {  //加载成功时执行
+                console.info("加载数据成功");
+            },
+            onLoadError: function () {  //加载失败时执行
+                console.info("加载数据失败");
+            }
+        });
+    };
+
+
+
+    function  exportExcel(){
+        window.open("../room/TestExcel")
+    }
+</script>
+
+</div>
+
+</body>
+</html>
