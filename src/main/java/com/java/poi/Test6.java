@@ -19,9 +19,9 @@ public class Test6 {
         Sheet sheet = wb.createSheet("创建sheet页");
         Row row = sheet.createRow(2);//创建行
         row.setHeightInPoints(30);
-        createCell(wb, row, (short) 0, (short) 600, (short) 600);
+        createCell(wb, row, (short) 0, (short)2, (short)1);
 
-        FileOutputStream fileOutputStream = new FileOutputStream("D:\\3.xls");
+        FileOutputStream fileOutputStream = new FileOutputStream("D:\\4.xls");
         wb.write(fileOutputStream);
         fileOutputStream.close();
     }
@@ -41,6 +41,8 @@ public class Test6 {
         CellStyle cellStyle = wb.createCellStyle();  //设置样式
         cellStyle.setAlignment(HorizontalAlignment.forInt(halign)); //设置水平方向的对其方式
         cellStyle.setVerticalAlignment(VerticalAlignment.forInt(valign)); //设置垂直方法的对齐方式
+       //  cellStyle.setAlignment(HorizontalAlignment.CENTER);
+       // cellStyle.setVerticalAlignment(VerticalAlignment.CENTER);
         cell.setCellStyle(cellStyle); //设置单元格样式
 
     }
