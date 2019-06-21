@@ -46,31 +46,31 @@ public class ExcelUtil {
 	 * @throws Exception
 	 */
 	public static Workbook fillExcelDataWithTemplate(List list, String templateFileName)throws Exception{
-		InputStream inp=ExcelUtil.class.getResourceAsStream("/com/java/template/"+templateFileName);
+		System.out.println("进入fillExcelDataWithTemplate:"+templateFileName);
+		//Class.getResourceAsStream(String path) ： path 不以’/'开头时默认是从此类所在的包下取资源
+		// ，以’/'开头则是从ClassPath根下获取。其只是通过path构造一个绝对路径，最终还是由ClassLoader获取资源。
+		//getResourceAsStream(String path) com/scce/template/userExporTemplate.xls
+		InputStream inp=ExcelUtil.class.getResourceAsStream("userExporTemplate.xls");
+		System.out.println(inp);
+		//POIFSFileSystem 进行解析Excel
 		POIFSFileSystem fs=new POIFSFileSystem(inp);
 		Workbook wb=new HSSFWorkbook(fs);
 		Sheet sheet=wb.getSheetAt(0);
-		// 获取列数
-		int cellNums=sheet.getRow(0).getLastCellNum();
 		int rowIndex=1;
-		/*while(rs.next()){
-			Row row=sheet.createRow(rowIndex++);
-			for(int i=0;i<cellNums;i++){
-				row.createCell(i).setCellValue(rs.getObject(i+1).toString());
-			}
-		}*/
 		for (int i = 0; i < list.size(); i++) {
+			System.out.println(list.get(i));
+			Room room= (Room) list.get(i);
 			Row row=sheet.createRow(rowIndex++);
-			for(int j=0;j<cellNums;j++){
-				row.createCell(i).setCellValue(list.get(j).toString());
-			}
-
+			row=sheet.createRow(rowIndex++);
+			row.createCell(0).setCellValue(room.getRoomNumber());
+			row.createCell(1).setCellValue((room.getPrice()));
+			row.createCell(2).setCellValue(room.getRoomType());
+			row.createCell(3).setCellValue(room.getDeposit());
+			row.createCell(4).setCellValue(room.getStatusstr());
 		}
 		return wb;
 	}
-
 	/**
-	 *
 	 * @param hssfCell
 	 * @return
 	 */

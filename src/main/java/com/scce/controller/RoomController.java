@@ -33,6 +33,7 @@ public class RoomController {
         return o;
     }
 
+    //导出Excel
     @RequestMapping("/TestExcel")
     public String TestExcel(HttpServletResponse response) throws Exception {
         System.out.println("进入TestExcel");
@@ -47,6 +48,23 @@ public class RoomController {
         }
         return null;
     }
+
+    //模板导出
+    @RequestMapping("/TemplateExcel")
+    public String TemplateExcel(HttpServletResponse response){
+        System.out.println("进入TemplateExcel");
+        try {
+            List<Room> list = roomService.getAllRoom();
+            Workbook wb = ExcelUtil.fillExcelDataWithTemplate(list, "userExporTemplate.xls");
+            ResponseUtil.export(response, wb, "模板导出excel.xls");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+
 
 }
 

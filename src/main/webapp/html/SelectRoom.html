@@ -28,6 +28,10 @@
     <button id="btn" type="button" class="btn btn-warning" onclick="exportExcel()">
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>导出表格
     </button>
+
+    <button id="btn1" type="button" class="btn btn-warning" onclick="TemplateExcel()">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>模板导出表格
+    </button>
 </div>
 <table id="page"></table>
 <script>
@@ -97,14 +101,18 @@
         });
     };
 
-
-
     function  exportExcel(){
-        window.open("../room/TestExcel")
+        window.open("../room/TestExcel");
     }
+
+    function TemplateExcel() {
+        window.open("../room/TemplateExcel");
+    }
+
 </script>
 
 </div>
+
 
 </body>
 </html>
