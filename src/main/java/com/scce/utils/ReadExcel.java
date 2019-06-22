@@ -20,18 +20,21 @@ import java.util.List;
  * @description:
  * @author: Lxy
  * @create: 2019-06-21 20:38
- **/
+ *
+*/
+
 public class ReadExcel {
 
     private static Logger logger  = Logger.getLogger(ReadExcel.class);
     private final static String xls = "xls";
     private final static String xlsx = "xlsx";
 
-    /**
+/**
      * 读入excel文件，解析后返回
      * @param file
      * @throws IOException
      */
+
     //读取文件生成集合
     public static List<String[]> readExcel(MultipartFile file) throws IOException {
         System.out.println("进入readExcel");

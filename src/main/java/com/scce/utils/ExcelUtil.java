@@ -49,8 +49,8 @@ public class ExcelUtil {
 		System.out.println("进入fillExcelDataWithTemplate:"+templateFileName);
 		//Class.getResourceAsStream(String path) ： path 不以’/'开头时默认是从此类所在的包下取资源
 		// ，以’/'开头则是从ClassPath根下获取。其只是通过path构造一个绝对路径，最终还是由ClassLoader获取资源。
-		//getResourceAsStream(String path) com/scce/template/userExporTemplate.xls
-		InputStream inp=ExcelUtil.class.getResourceAsStream("userExporTemplate.xls");
+		//getResourceAsStream(String path)  com.scce.template
+		InputStream inp=ExcelUtil.class.getResourceAsStream("/com/scce/template/"+templateFileName);
 		System.out.println(inp);
 		//POIFSFileSystem 进行解析Excel
 		POIFSFileSystem fs=new POIFSFileSystem(inp);

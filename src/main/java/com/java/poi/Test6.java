@@ -39,8 +39,8 @@ public class Test6 {
         Cell cell = row.createCell(colunm);
         cell.setCellValue(new HSSFRichTextString(" Align  it")); //设置值
         CellStyle cellStyle = wb.createCellStyle();  //设置样式
-        cellStyle.setAlignment(HorizontalAlignment.forInt(halign)); //设置水平方向的对其方式
-        cellStyle.setVerticalAlignment(VerticalAlignment.forInt(valign)); //设置垂直方法的对齐方式
+       /* cellStyle.setAlignment(HorizontalAlignment.forInt(halign)); //设置水平方向的对其方式
+        cellStyle.setVerticalAlignment(VerticalAlignment.forInt(valign)); //设置垂直方法的对齐方式*/
        //  cellStyle.setAlignment(HorizontalAlignment.CENTER);
        // cellStyle.setVerticalAlignment(VerticalAlignment.CENTER);
         cell.setCellStyle(cellStyle); //设置单元格样式
